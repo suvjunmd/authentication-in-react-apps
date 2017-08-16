@@ -7,8 +7,8 @@ class SignUpPage extends React.Component {
   /**
    * Class constructor.
    */
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
 
     // set the initial component state
     this.state = {
@@ -57,7 +57,7 @@ class SignUpPage extends React.Component {
         localStorage.setItem('successMessage', xhr.response.message);
 
         // make a redirect
-        this.context.router.replace('/login');
+        this.props.history.replace('/');
       } else {
         // failure
 
@@ -102,9 +102,5 @@ class SignUpPage extends React.Component {
   }
 
 }
-
-SignUpPage.contextTypes = {
-  router: PropTypes.object.isRequired
-};
 
 export default SignUpPage;

@@ -8,8 +8,8 @@ class LoginPage extends React.Component {
   /**
    * Class constructor.
    */
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
 
     const storedMessage = localStorage.getItem('successMessage');
     let successMessage = '';
@@ -66,7 +66,7 @@ class LoginPage extends React.Component {
 
 
         // change the current URL to /
-        this.context.router.replace('/');
+        this.props.history.replace('/');
       } else {
         // failure
 
@@ -113,9 +113,5 @@ class LoginPage extends React.Component {
   }
 
 }
-
-LoginPage.contextTypes = {
-  router: PropTypes.object.isRequired
-};
 
 export default LoginPage;
