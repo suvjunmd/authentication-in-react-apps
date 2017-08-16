@@ -3,11 +3,11 @@ import ReactDom from 'react-dom';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Base from './components/Base';
+import App from './components/App';
 
 ReactDom.render((
   <MuiThemeProvider muiTheme={getMuiTheme()}>
     <Router>
-      <Base></Base>
+      <App></App>
     </Router>
   </MuiThemeProvider>), document.getElementById('react-app'));

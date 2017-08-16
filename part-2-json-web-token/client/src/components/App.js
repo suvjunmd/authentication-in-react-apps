@@ -8,7 +8,7 @@ import LoginPage from '../containers/LoginPage';
 import SignUpPage from '../containers/SignUpPage';
 import LogoutPage from '../containers/LogoutPage';
 
-const Base = () => (
+const App = () => (
   <div>
     <div className="top-bar">
       <div className="top-bar-left">
@@ -38,4 +38,4 @@ const Base = () => (
   </div>
 );
 
-export default Base;
+export default App;
