@@ -1,6 +1,7 @@
 import React from 'react';
 import SignUpForm from '../components/SignUpForm';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 class SignUpPage extends React.Component {
 
@@ -40,36 +41,30 @@ class SignUpPage extends React.Component {
     const formData = `name=${name}&email=${email}&password=${password}`;
 
     // create an AJAX request
-    const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/signup');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
-        // success
+    axios.post('/auth/signup', formData)
+    .then((response) => {
+      this.setState({
+        errors: {}
+      });
 
-        // change the component-container state
-        this.setState({
-          errors: {}
-        });
+      // set a message
+      localStorage.setItem('successMessage', response.data.message);
 
-        // set a message
-        localStorage.setItem('successMessage', xhr.response.message);
-
-        // make a redirect
-        this.props.history.replace('/');
-      } else {
-        // failure
-
-        const errors = xhr.response.errors ? xhr.response.errors : {};
-        errors.summary = xhr.response.message;
+      // change the current URL to /
+      this.props.history.replace('/login');
+    })
+    .catch((error) => {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        const errors = error.response.data.errors ? error.response.data.errors : {};
+        errors.summary = error.response.data.message;
 
         this.setState({
           errors
         });
       }
     });
-    xhr.send(formData);
   }
 
   /**
