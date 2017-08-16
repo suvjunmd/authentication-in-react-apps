@@ -103,4 +103,8 @@ class SignUpPage extends React.Component {
 
 }
 
+SignUpPage.propTypes = {
+  history: PropTypes.object.isRequired
+};
+
 export default SignUpPage;

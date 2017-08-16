@@ -114,4 +114,8 @@ class LoginPage extends React.Component {
 
 }
 
+LoginPage.propTypes = {
+  history: PropTypes.object.isRequired
+};
+
 export default LoginPage;
